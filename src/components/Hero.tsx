@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-end justify-center overflow-hidden pb-16 md:pb-24">
+    <section className="relative min-h-screen flex items-center md:items-end justify-center overflow-hidden pt-20 pb-16 md:pt-0 md:pb-24">
       {/* Background: dark gradient with warm spotlight */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a12] via-[#0a0a0a] to-[#0e0e12]" />
 
@@ -22,7 +22,7 @@ export default function Hero() {
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1.2, delay: 0.3 }}
-        className="absolute bottom-0 right-[5%] md:right-[10%] lg:right-[15%] w-[280px] sm:w-[340px] md:w-[420px] lg:w-[500px] pointer-events-none"
+        className="absolute bottom-0 right-0 md:right-[10%] lg:right-[15%] w-[240px] sm:w-[300px] md:w-[420px] lg:w-[500px] pointer-events-none opacity-60 md:opacity-100"
       >
         <Image
           src="/images/mark-cutout-smile.png"
