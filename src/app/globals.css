@@ -200,12 +200,29 @@ body {
 /* ===== NEON KEYFRAMES ===== */
 
 @keyframes neon-flicker {
-  0%, 100% { opacity: 1; }
-  92% { opacity: 1; }
-  93% { opacity: 0.8; }
+  0% { opacity: 1; }
+  5% { opacity: 0.65; }
+  6% { opacity: 1; }
+  12% { opacity: 0.8; }
+  13% { opacity: 1; }
+  30% { opacity: 1; }
+  31% { opacity: 0.5; }
+  32% { opacity: 0.85; }
+  33% { opacity: 1; }
+  50% { opacity: 1; }
+  52% { opacity: 0.7; }
+  53% { opacity: 1; }
+  54% { opacity: 0.6; }
+  55% { opacity: 1; }
+  75% { opacity: 1; }
+  76% { opacity: 0.75; }
+  77% { opacity: 1; }
+  90% { opacity: 1; }
+  91% { opacity: 0.55; }
+  92% { opacity: 0.9; }
+  93% { opacity: 0.6; }
   94% { opacity: 1; }
-  96% { opacity: 0.9; }
-  97% { opacity: 1; }
+  100% { opacity: 1; }
 }
 
 @keyframes glow-pulse {
@@ -220,7 +237,12 @@ body {
 }
 
 .animate-neon-flicker {
-  animation: neon-flicker 4s infinite;
+  animation: neon-flicker 2.5s infinite;
+}
+
+/* Offset flicker for secondary elements */
+.animate-neon-flicker-alt {
+  animation: neon-flicker 3.2s 0.8s infinite;
 }
 
 .animate-glow-pulse {

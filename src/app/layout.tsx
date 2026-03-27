@@ -102,8 +102,8 @@ export default function RootLayout({
       <head>
         <PersonJsonLd />
         <EventsJsonLd />
-        <link rel="icon" href="/images/mv-logo-white.png" />
-        <link rel="apple-touch-icon" href="/images/mv-logo-white.png" />
+        <link rel="icon" href="/icon.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/apple-icon.png" />
       </head>
       <body
         className={`${heading.variable} ${body.variable} antialiased bg-background text-foreground`}
