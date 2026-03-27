@@ -7,10 +7,14 @@
   --color-gold-light: #e8c468;
   --color-gold-dark: #b8922e;
   --color-amber: #f59e0b;
-  --color-surface: #141414;
-  --color-surface-light: #1e1e1e;
-  --color-border: #2a2a2a;
-  --color-muted: #888888;
+  --color-neon-cyan: #00e5ff;
+  --color-neon-cyan-dim: #00b8d4;
+  --color-neon-magenta: #ff2d78;
+  --color-surface: #0e0e12;
+  --color-surface-light: #16161d;
+  --color-border: #1e1e2a;
+  --color-border-glow: #2a2a3a;
+  --color-muted: #7a7a8e;
   --font-sans: var(--font-body);
   --font-display: var(--font-heading);
 }
@@ -27,7 +31,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Gold gradient text utility */
+/* ===== NEON TEXT EFFECTS ===== */
+
+/* Gold gradient text */
 .text-gradient-gold {
   background: linear-gradient(135deg, #d4a844 0%, #e8c468 50%, #d4a844 100%);
   -webkit-background-clip: text;
@@ -35,14 +41,86 @@ body {
   background-clip: text;
 }
 
-/* Spotlight glow effect */
+/* Neon cyan text with glow */
+.text-neon-cyan {
+  color: #00e5ff;
+  text-shadow:
+    0 0 7px rgba(0, 229, 255, 0.6),
+    0 0 20px rgba(0, 229, 255, 0.3),
+    0 0 40px rgba(0, 229, 255, 0.15);
+}
+
+/* Neon gold text with glow */
+.text-neon-gold {
+  color: #e8c468;
+  text-shadow:
+    0 0 7px rgba(232, 196, 104, 0.6),
+    0 0 20px rgba(232, 196, 104, 0.3),
+    0 0 40px rgba(232, 196, 104, 0.15);
+}
+
+/* Neon outline text (like the flyer "MARK VIERA") */
+.text-neon-outline {
+  color: transparent;
+  -webkit-text-stroke: 2px #00e5ff;
+  text-shadow:
+    0 0 10px rgba(0, 229, 255, 0.5),
+    0 0 30px rgba(0, 229, 255, 0.2),
+    0 0 60px rgba(0, 229, 255, 0.1);
+}
+
+/* Neon border glow */
+.border-neon {
+  border-color: rgba(0, 229, 255, 0.3);
+  box-shadow:
+    0 0 8px rgba(0, 229, 255, 0.1),
+    inset 0 0 8px rgba(0, 229, 255, 0.05);
+}
+
+.border-neon-gold {
+  border-color: rgba(212, 168, 68, 0.3);
+  box-shadow:
+    0 0 8px rgba(212, 168, 68, 0.1),
+    inset 0 0 8px rgba(212, 168, 68, 0.05);
+}
+
+/* ===== GLOW EFFECTS ===== */
+
+/* Spotlight glow - warm */
 .spotlight-glow {
   background: radial-gradient(
     ellipse at center,
-    rgba(212, 168, 68, 0.15) 0%,
+    rgba(212, 168, 68, 0.12) 0%,
+    rgba(0, 229, 255, 0.04) 40%,
     transparent 70%
   );
 }
+
+/* Ambient glow behind elements */
+.glow-ambient {
+  position: relative;
+}
+.glow-ambient::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 229, 255, 0.15),
+    rgba(212, 168, 68, 0.15),
+    rgba(0, 229, 255, 0.15)
+  );
+  filter: blur(12px);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.glow-ambient:hover::before {
+  opacity: 1;
+}
+
+/* ===== TEXTURE & DIVIDERS ===== */
 
 /* Subtle noise texture overlay */
 .noise-overlay::before {
@@ -54,28 +132,97 @@ body {
   pointer-events: none;
 }
 
-/* Section divider line */
+/* Section divider - neon gradient line */
 .section-divider {
   height: 1px;
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(212, 168, 68, 0.3),
+    rgba(0, 229, 255, 0.2),
+    rgba(212, 168, 68, 0.4),
+    rgba(0, 229, 255, 0.2),
     transparent
   );
 }
 
-/* Scrollbar styling */
+/* ===== NEON BUTTON STYLES ===== */
+
+.btn-neon {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+.btn-neon::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 229, 255, 0.1),
+    rgba(212, 168, 68, 0.1)
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.btn-neon:hover::before {
+  opacity: 1;
+}
+
+/* ===== CARD GLOW ON HOVER ===== */
+
+.card-glow {
+  transition: all 0.3s ease;
+  border: 1px solid var(--color-border);
+}
+.card-glow:hover {
+  border-color: rgba(0, 229, 255, 0.3);
+  box-shadow:
+    0 0 15px rgba(0, 229, 255, 0.08),
+    0 4px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* ===== SCROLLBAR ===== */
+
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 ::-webkit-scrollbar-track {
   background: #0a0a0a;
 }
 ::-webkit-scrollbar-thumb {
-  background: #333;
-  border-radius: 4px;
+  background: #2a2a3a;
+  border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: #3a3a4a;
+}
+
+/* ===== NEON KEYFRAMES ===== */
+
+@keyframes neon-flicker {
+  0%, 100% { opacity: 1; }
+  92% { opacity: 1; }
+  93% { opacity: 0.8; }
+  94% { opacity: 1; }
+  96% { opacity: 0.9; }
+  97% { opacity: 1; }
+}
+
+@keyframes glow-pulse {
+  0%, 100% {
+    filter: brightness(1);
+    text-shadow: 0 0 7px rgba(0, 229, 255, 0.6), 0 0 20px rgba(0, 229, 255, 0.3);
+  }
+  50% {
+    filter: brightness(1.1);
+    text-shadow: 0 0 10px rgba(0, 229, 255, 0.8), 0 0 30px rgba(0, 229, 255, 0.4), 0 0 50px rgba(0, 229, 255, 0.2);
+  }
+}
+
+.animate-neon-flicker {
+  animation: neon-flicker 4s infinite;
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 3s ease-in-out infinite;
 }

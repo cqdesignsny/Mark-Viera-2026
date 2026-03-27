@@ -39,3 +39,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Source image files (copies live in public/images/)
+/Mark Viera Logo/
+/Mark-1.png
+/Mark_Mark_*.jpeg
+/mark1.png
+/mark2.png
+/mark3.png

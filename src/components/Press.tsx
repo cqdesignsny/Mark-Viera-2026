@@ -1,42 +1,52 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { pressItems, tvCredits } from "@/data/press";
 import AnimatedSection from "./AnimatedSection";
 
 export default function Press() {
   return (
-    <section id="press" className="relative py-24 md:py-32">
-      <div className="max-w-5xl mx-auto px-6">
+    <section id="press" className="relative py-24 md:py-32 overflow-hidden">
+      {/* Background glow */}
+      <div className="absolute bottom-0 left-1/4 w-[500px] h-[400px] bg-gold/4 rounded-full blur-[100px]" />
+
+      <div className="max-w-5xl mx-auto px-6 relative z-10">
         <AnimatedSection>
-          <p className="text-gold uppercase tracking-[0.3em] text-sm font-medium mb-3">
+          <p className="text-neon-cyan uppercase tracking-[0.4em] text-xs font-medium mb-3 animate-glow-pulse">
             As Seen On
           </p>
           <h2 className="font-[family-name:var(--font-heading)] text-4xl md:text-5xl lg:text-6xl font-bold uppercase tracking-tight">
-            Press &amp; Credits
+            Press &amp; <span className="text-gradient-gold">Credits</span>
           </h2>
         </AnimatedSection>
 
-        {/* TV Network credits */}
+        {/* TV Network credits — neon badges */}
         <AnimatedSection delay={0.1} className="mt-12">
-          <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10">
-            {tvCredits.map((network) => (
-              <div
+          <div className="flex flex-wrap items-center justify-center gap-4 md:gap-5">
+            {tvCredits.map((network, i) => (
+              <motion.div
                 key={network}
-                className="px-6 py-3 border border-border rounded-lg"
+                whileHover={{ scale: 1.1, y: -3 }}
+                transition={{ duration: 0.2 }}
+                className="px-5 py-3 rounded-lg border border-border-glow bg-surface card-glow"
               >
-                <p className="font-[family-name:var(--font-heading)] text-lg md:text-xl font-bold uppercase tracking-wider text-muted">
+                <p className="font-[family-name:var(--font-heading)] text-base md:text-lg font-bold uppercase tracking-wider text-neon-cyan">
                   {network}
                 </p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </AnimatedSection>
 
         {/* Press quotes */}
-        <div className="mt-16 grid md:grid-cols-3 gap-6">
+        <div className="mt-16 grid md:grid-cols-3 gap-5">
           {pressItems.map((item, i) => (
             <AnimatedSection key={item.id} delay={0.15 + i * 0.1}>
-              <div className="p-6 rounded-lg bg-surface border border-border h-full flex flex-col">
+              <motion.div
+                whileHover={{ y: -6 }}
+                transition={{ duration: 0.3 }}
+                className="p-6 rounded-xl bg-surface card-glow h-full flex flex-col"
+              >
                 <svg
                   className="w-8 h-8 text-gold/40 mb-4"
                   fill="currentColor"
@@ -50,7 +60,7 @@ export default function Press() {
                 <p className="text-gold text-sm font-medium mt-4 uppercase tracking-wider">
                   &mdash; {item.outlet}
                 </p>
-              </div>
+              </motion.div>
             </AnimatedSection>
           ))}
         </div>
@@ -58,9 +68,22 @@ export default function Press() {
         <AnimatedSection delay={0.3} className="mt-10 text-center">
           <a
             href="/press"
-            className="text-gold hover:text-gold-light text-sm uppercase tracking-widest font-medium transition-colors"
+            className="inline-flex items-center gap-2 text-neon-cyan hover:text-neon-cyan text-sm uppercase tracking-widest font-medium transition-all duration-300 hover:gap-3"
           >
-            View Press Kit &rarr;
+            View Press Kit
+            <svg
+              className="w-4 h-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M17 8l4 4m0 0l-4 4m4-4H3"
+              />
+            </svg>
           </a>
         </AnimatedSection>
       </div>
